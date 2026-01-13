@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Portfolio</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        font-family: "Times New Roman", Times, serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* BIG CONTAINER */
+    .landing {
+        text-align: center;
+        width: 80%; /* larger container */
+        max-width: 800px;
+        padding: 60px 40px; /* bigger padding */
+        background-color: #ffffff; /* removed black, white container */
+        border: 4px solid #1f7a1f; /* green border */
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.2); /* shadow for depth */
+    }
+
+    /* TITLE */
+    .landing h1 {
+        font-size: 24px;
+        color: #1f7a1f; /* green title */
+        margin-bottom: 30px;
+        animation: slideDown 1.5s ease-out;
+    }
+
+    /* ENTER BUTTON */
+    .landing a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #ffffff;
+        background-color: #c9a200; /* mustard yellow button */
+        border: 2px solid #c9a200;
+        padding: 12px 30px;
+        border-radius: 8px;
+        display: inline-block;
+        transition: all 0.3s ease;
+        animation: pulse 2s infinite;
+    }
+
+    .landing a:hover {
+        background-color: #1f7a1f; /* green on hover */
+        border-color: #1f7a1f;
+    }
+
+    /* ANIMATIONS */
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="landing">
+    <h1>PORTFOLIO</h1>
+    <a href="index.html">Enter</a>
+</div>
+
+</body>
+</html>
