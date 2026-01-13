@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Professional Portfolio</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        padding: 16px;
+        background: #111;
+        border-bottom: 2px solid #f2c200;
+    }
+
+    nav button {
+        background: #1f7a1f;
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    nav button:hover {
+        background: #f2c200;
+        color: #000;
+    }
+
+    main {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    .section {
+        display: none;
+        background: #111;
+        padding: 25px;
+        border-radius: 10px;
+        border-left: 6px solid #1f7a1f;
+    }
+
+    .section.active {
+        display: block;
+    }
+
+    h2 {
+        color: #f2c200;
+        margin-top: 0;
+    }
+
+    .action-btn {
+        background: #1f7a1f;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 6px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .action-btn:hover {
+        background: #f2c200;
+        color: #000;
+    }
+
+    input[type="file"] {
+        margin-top: 10px;
+        color: #fff;
+    }
+
+    img {
+        max-width: 160px;
+        border-radius: 10px;
+        border: 3px solid #f2c200;
+        margin-top: 15px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        color: #aaa;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<nav>
+    <button onclick="showSection('profile')">My Profile</button>
+    <button onclick="showSection('contact')">Inquiries</button>
+    <button onclick="showSection('resume')">Resume</button>
+    <button onclick="showSection('webinars')">Webinars</button>
+</nav>
+
+<main>
+
+<!-- PROFILE -->
+<section id="profile" class="section active">
+    <h2>My Profile</h2>
+
+    <p><strong>Name:</strong> Vevien Althia Trasmonte</p>
+    <p>Aspiring Web & System Developer focused on secure, data-driven systems.</p>
+
+    <label><strong>Upload Profile Picture</strong></label><br>
+    <input type="file" accept="image/*" onchange="previewImage(event)">
+    <br>
+    <img id="profilePreview" style="display:none;">
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+    <h2>Social Media / Inquiries</h2>
+    <ul>
+        <li>Email: your.email@example.com</li>
+        <li>Phone: 09XXXXXXXXX</li>
+        <li>Facebook: facebook.com/yourprofile</li>
+        <li>GitHub: github.com/yourusername</li>
+    </ul>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="section">
+    <h2>Resume</h2>
+
+    <label><strong>Upload Resume (PDF / DOC)</strong></label><br>
+    <input type="file" accept=".pdf,.doc,.docx" onchange="showResumeName(event)">
+    
+    <p id="resumeFile"></p>
+</section>
+
+<!-- WEBINARS -->
+<section id="webinars" class="section">
+    <h2>Webinars & Seminars Attended</h2>
+
+    <label><strong>Upload Certificate / Proof</strong></label><br>
+    <input type="file" multiple onchange="addCertificates(event)">
+
+    <ul id="certList"></ul>
+</section>
+
+</main>
+
+<footer>
+© 2026 Vevien Althia Trasmonte | Professional Portfolio
+</footer>
+
+<script>
+function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+/* IMAGE PREVIEW */
+function previewImage(event) {
+    const img = document.getElementById('profilePreview');
+    img.src = URL.createObjectURL(event.target.files[0]);
+    img.style.display = "block";
+}
+
+/* RESUME NAME */
+function showResumeName(event) {
+    document.getElementById('resumeFile').innerHTML =
+        "Uploaded Resume: <strong>" + event.target.files[0].name + "</strong>";
+}
+
+/* CERTIFICATE LIST */
+function addCertificates(event) {
+    const list = document.getElementById('certList');
+    for (let file of event.target.files) {
+        const li = document.createElement('li');
+        li.textContent = file.name;
+        list.appendChild(li);
+    }
+}
+</script>
+
+</body>
+</html>
